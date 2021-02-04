@@ -1,15 +1,25 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FaBars, FaTwitter } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { links, social } from "./data";
 import logo from "./logo.svg";
 
 const Navbar = () => {
+    const linkRef = useRef(null);
+    const linkContainerRef = useRef(null);
     const [toggle, settoggle] = useState(false);
+
+    useEffect(() => {
+        const linkHeight = linkRef.current.getBoundingClientRect().height;
+        if (toggle) {
+            linkContainerRef.current.style.height = `${linkHeight}px`;
+        } else linkContainerRef.current.style.height = "0px";
+    }, [toggle]);
+
     return (
         <nav>
             <div className="nav-center">
                 <div className="nav-header">
-                    <img src={logo} alt="site-logo" />
+                    <img className="logo"src={logo} alt="site-logo" />
                     <button
                         className="nav-toggle"
                         onClick={() => {
@@ -20,13 +30,10 @@ const Navbar = () => {
                     </button>
                 </div>
                 <div
-                    className={`${
-                        toggle
-                            ? "links-container show-container"
-                            : "links-container"
-                    }`}
+                    className='links-container'
+                    ref={linkContainerRef}
                 >
-                    <ul className="links">
+                    <ul className="links" ref={linkRef}>
                         {/* <li>
                             <a href="#">home</a>
                         </li>
