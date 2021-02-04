@@ -4,16 +4,28 @@ import { links, social } from "./data";
 import logo from "./logo.svg";
 
 const Navbar = () => {
+    const [toggle, settoggle] = useState(false);
     return (
         <nav>
             <div className="nav-center">
                 <div className="nav-header">
                     <img src={logo} alt="site-logo" />
-                    <button className="nav-toggle">
+                    <button
+                        className="nav-toggle"
+                        onClick={() => {
+                            settoggle((prevState) => !prevState);
+                        }}
+                    >
                         <FaBars />
                     </button>
                 </div>
-                <div className="links-container show-container">
+                <div
+                    className={`${
+                        toggle
+                            ? "links-container show-container"
+                            : "links-container"
+                    }`}
+                >
                     <ul className="links">
                         {/* <li>
                             <a href="#">home</a>
@@ -53,11 +65,13 @@ const Navbar = () => {
                             <FaTwitter />
                         </a>
                     </li> */}
-                    {social.map((soc)=>{
-                        const {id, url, icon} = soc;
-                        return (<li key={id}>
-                            <a href={url}>{icon}</a>
-                        </li>)
+                    {social.map((soc) => {
+                        const { id, url, icon } = soc;
+                        return (
+                            <li key={id}>
+                                <a href={url}>{icon}</a>
+                            </li>
+                        );
                     })}
                 </ul>
             </div>
