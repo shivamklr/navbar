@@ -19,7 +19,7 @@ const Navbar = () => {
         <nav>
             <div className="nav-center">
                 <div className="nav-header">
-                    <img className="logo"src={logo} alt="site-logo" />
+                    <img className="logo" src={logo} alt="site-logo" />
                     <button
                         className="nav-toggle"
                         onClick={() => {
@@ -29,23 +29,8 @@ const Navbar = () => {
                         <FaBars />
                     </button>
                 </div>
-                <div
-                    className='links-container'
-                    ref={linkContainerRef}
-                >
+                <div className="links-container" ref={linkContainerRef}>
                     <ul className="links" ref={linkRef}>
-                        {/* <li>
-                            <a href="#">home</a>
-                        </li>
-                        <li>
-                            <a href="#">about</a>
-                        </li>
-                        <li>
-                            <a href="#">contact</a>
-                        </li>
-                        <li>
-                            <a href="#">products</a>
-                        </li> */}
                         {links.map((link) => {
                             const { id, url, text } = link;
                             return (
@@ -57,21 +42,6 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <ul className="social-icons">
-                    {/* <li>
-                        <a href="http://www.twitter.com">
-                            <FaTwitter />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.twitter.com">
-                            <FaTwitter />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.twitter.com">
-                            <FaTwitter />
-                        </a>
-                    </li> */}
                     {social.map((soc) => {
                         const { id, url, icon } = soc;
                         return (
